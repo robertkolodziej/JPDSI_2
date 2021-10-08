@@ -3,26 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Kalkulator kredytowy</title>
+	<title>Kalkulator </title>
 </h:head>
-<h:body>
+<h:body style = "background-color:#DBECE7;">
 
-	<h1>Oblicz swoją miesięczną rate!</h1>
 
-	<h:form id="monthlyRate">
-  		Kwota <h:inputText value="#{kredytBB.amount}" />
-		<br />
-  		Ilość miesięcy: <h:inputText value="#{kredytBB.months}" />
-		<br />
-		Oprocentowanie: <h:inputText value="#{kredytBB.interest}" />
-		<br />
-		<h:messages id="msg" />
 
-		<h:commandButton value="Oblicz ratę" action="#{kredytBB.monthlyRate()}"/>
 
-	</h:form>
+
+<div class="card">
+    <h:form >
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+
+    <p:panel header="Oblicz swoją miesięczną rate!" toggleable="true" closable="false" toggleSpeed="500"
+                closeSpeed="500" widgetVar="panel">
+
+        <p class="p-m-0">
+    <p:panelGrid columns="3" layout="flex" styleClass="showcase-text-align-center">
+        <p:outputLabel for="amount" value="Kwota:"/>
+                <p:inputNumber id="amount" value="#{kredytBB.amount}" symbol=" ZŁ"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="." required="true" requiredMessage="Nie podano kwoty kredytu" />
+
+  <p:outputLabel for="months" value="Ilość miesięcy:"/>
+                <p:inputNumber id="months" value="#{kredytBB.months}" modifyValueOnWheel="false" required="true" requiredMessage="Nie podano liczby miesięcy" />
+
+        <p:outputLabel for="interest" value="Oprocentowanie:"/>
+                <p:inputNumber id="interest" value="#{kredytBB.interest}" symbol="%"
+                                symbolPosition="s"  required="true" requiredMessage="Nie podano oprocentowania" />
+                                
+                                    <p:commandButton   value="Oblicz ratę" action="#{kredytBB.monthlyRate()}" ajax="false" />
+    </p:panelGrid>
+</p>
+</p:panel>
+    </h:form>
+</div>
 
 </h:body>
 </html>
