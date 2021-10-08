@@ -6,48 +6,41 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Kalkulator</title>
+	<title>Kalkulator </title>
 </h:head>
-<h:body style="background-color:#DBECE7;">
+<h:body style = "background-color:#DBECE7;">
 
 
 
 
 
-	<div class="card">
-		<h:form>
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+<div class="card">
+    <h:form >
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
 
-			<p:panel header="Oblicz swoją miesięczną rate!" toggleable="true"
-				closable="false" toggleSpeed="500" closeSpeed="500"
-				widgetVar="panel">
+    <p:panel header="Oblicz swoją miesięczną rate!" toggleable="true" closable="false" toggleSpeed="500"
+                closeSpeed="500" widgetVar="panel">
 
-				<p class="p-m-0">
-					<p:panelGrid columns="3" layout="flex"
-						styleClass="showcase-text-align-center">
-						<p:outputLabel for="amount" value="Kwota:" />
-						<p:inputNumber id="amount" value="#{kredytBB.amount}" symbol=" ZŁ"
-							symbolPosition="s" decimalSeparator="," thousandSeparator="."
-							required="true" requiredMessage="Nie podano kwoty kredytu" />
+        <p class="p-m-0">
+    <p:panelGrid columns="3" layout="flex" styleClass="showcase-text-align-center">
+        <p:outputLabel for="amount" value="Kwota:"/>
+                <p:inputNumber id="amount" value="#{kredytBB.amount}" symbol=" ZŁ"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="." required="true" requiredMessage="Nie podano kwoty kredytu" />
 
-						<p:outputLabel for="months" value="Ilość miesięcy:" />
-						<p:inputNumber id="months" value="#{kredytBB.months}"
-							modifyValueOnWheel="false" required="true"
-							requiredMessage="Nie podano liczby miesięcy" />
+  <p:outputLabel for="months" value="Ilość miesięcy:"/>
+                <p:inputNumber id="months" value="#{kredytBB.months}" modifyValueOnWheel="false" required="true" requiredMessage="Nie podano liczby miesięcy" />
 
-						<p:outputLabel for="interest" value="Oprocentowanie:" />
-						<p:inputNumber id="interest" value="#{kredytBB.interest}"
-							symbol="%" symbolPosition="s" required="true"
-							requiredMessage="Nie podano oprocentowania" />
-
-						<p:commandButton value="Oblicz ratę"
-							action="#{kredytBB.monthlyRate()}" ajax="false" />
-					</p:panelGrid>
-				</p>
-			</p:panel>
-		</h:form>
-	</div>
+        <p:outputLabel for="interest" value="Oprocentowanie:"/>
+                <p:inputNumber id="interest" value="#{kredytBB.interest}" symbol="%"
+                                symbolPosition="s"  required="true" requiredMessage="Nie podano oprocentowania" />
+                                
+                                    <p:commandButton   value="Oblicz ratę" action="#{kredytBB.monthlyRate()}" ajax="false" />
+    </p:panelGrid>
+</p>
+</p:panel>
+    </h:form>
+</div>
 
 </h:body>
 </html>
